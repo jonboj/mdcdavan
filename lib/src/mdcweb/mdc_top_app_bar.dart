@@ -23,13 +23,13 @@ class MdcTopAppBarDataDemo extends MdcTopAppBarData {
 class MdcTopAppBar extends MdaBaseElem implements MdaStreamElem<MouseEvent> {
 
   static const String STREAM_ID = 'MDC_TOP_APP_BAR';
-  static const MdcElemSpec ELEM_SPEC =
+  static const MdcElemSpec _ELEM_SPEC =
     const MdcElemSpec(HtmlConsts.HEADER, MDC_CSS.TOP_APP_BAR, [MDC_CSS.TOP_APP_BAR__FIXED]);
 
   AnchorElement _menuElem;
 
   MdcTopAppBar(MdcTopAppBarData appData) {
-    element = ELEM_SPEC.build();
+    element = _ELEM_SPEC.build();
     _buildStructure(appData);
   }
 

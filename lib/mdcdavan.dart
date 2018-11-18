@@ -1,10 +1,9 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+
 library mdcdavan;
 
 export 'src/mdcweb/mdc_css_classes.dart';
 export 'src/mdcweb/mdc_drawer.dart';
+export 'src/mdcweb/mdc_fab.dart';
 export 'src/mdcweb/mdc_floating_label.dart';
 export 'src/mdcweb/mdc_list.dart';
 export 'src/mdcweb/mdc_list_item.dart';

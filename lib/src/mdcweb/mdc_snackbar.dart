@@ -9,14 +9,14 @@ import 'html_const.dart';
 
 class MdcSnackbar {
   Element _element;
-  static const MdcElemSpec ELEM_SPEC =
+  static const MdcElemSpec _ELEM_SPEC =
     const MdcElemSpec(HtmlConsts.SPAN, MDC_CSS.SNACKBAR, [MDC_CSS.SNACKBAR__ALIGN_START]);
 
   static jsreg.MdcSnackbarJS _mdcSnackbarJS;
   static MdcSnackbar singletonElement;
 
   MdcSnackbar() {
-    _element = ELEM_SPEC.build();
+    _element = _ELEM_SPEC.build();
     _element.append(new DivElement()..classes.add(MDC_CSS.SNACKBAR__TEXT));
     _element.append(new DivElement()..classes.add(MDC_CSS.SNACKBAR__ACTION_WRAPPER));
 

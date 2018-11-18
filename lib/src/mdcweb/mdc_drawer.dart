@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'dart:async';
 
 import 'package:mdcdavan/src/mdcweb/reg_elem.dart' as jsreg;
 

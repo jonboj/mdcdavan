@@ -7,7 +7,8 @@ import "package:js/js.dart";
 @JS()
 class MdcDialogJS {
   external MdcDialogJS(Element e);
-  external void show();
+  external void open();
+  external void close();
 }
 
 @JS()

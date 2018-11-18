@@ -1,6 +1,5 @@
 
 import 'dart:html';
-import 'dart:async';
 
 import 'package:async/async.dart';
 import 'package:mdcdavan/src/mdcweb/reg_elem.dart' as jsreg;
@@ -15,12 +14,12 @@ import 'mdc_list_item.dart';
 class MdcList extends MdaNodeElem implements MdcJsComp, MdaStreamElem<int> {
   static const String STREAM_ID = 'MDC_LIST';
 
-  static const MdcElemSpec ELEM_SPEC = const MdcElemSpec(HtmlConsts.NAV, MDC_CSS.LIST);
+  static const MdcElemSpec _ELEM_SPEC = const MdcElemSpec(HtmlConsts.NAV, MDC_CSS.LIST);
   jsreg.MdcListJS _mdcListJS;
   List<MdcListItem> _contentItems;
 
   MdcList(List<MdcListItem> this._contentItems)
-      : super(ELEM_SPEC.build(), _contentItems);
+      : super(_ELEM_SPEC.build(), _contentItems);
 
   @override
   void mdcJsInitialSyncWithDOM() {

@@ -9,10 +9,10 @@ import 'html_const.dart';
 
 class MdcListItem extends MdaBaseElem {
 
-  static const MdcElemSpec ELEM_SPEC = const MdcElemSpec(HtmlConsts.A, MDC_CSS.LIST_ITEM);
+  static const MdcElemSpec _ELEM_SPEC = const MdcElemSpec(HtmlConsts.A, MDC_CSS.LIST_ITEM);
 
   MdcListItem(String text, String iconType) {
-    element = ELEM_SPEC.build();
+    element = _ELEM_SPEC.build();
     element.setAttribute('tabindex', '0');
 
     element.append(

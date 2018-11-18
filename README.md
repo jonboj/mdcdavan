@@ -1,7 +1,7 @@
 # Mdcdavan
 
 Dart library for writting web apps using Dart wrapping of [mdc web](https://github.com/material-components/material-components-web)
-components through a `js_interop` layer. Additional a React like micro application framework, with
+components through a `js_interop` layer. Additional a React like micro framework, with
 Streams for upward dataflow and new object instances for downward dataflow.
 
 Current version of `mdcdavan` is a minimal test of concept. Feedback as issues and feature requests are welcome,
@@ -52,7 +52,7 @@ aggregated js object. e.g. `MdcIconButton` at js [mdc-icon-button](https://githu
 #### Mdc web CSS classes
 
 Mdc web components has related a set of css classes e.g. `mdc-drawer` and `mdc-drawer__content`.
-These parsed from `material-components-web.min.css` with a console Dart program ( `mdc_cssparse.dart` )
+These are parsed from `material-components-web.min.css` with a console Dart program ( `mdc_cssparse.dart` )
 as constants into Dart class `MDC_CSS`. Hence `MDC_CSS` acts as a checked reference for mdc web css classes definitions.
 Current version of `MDC_CSS` is based on mdc web version `0.40.0`.
 

@@ -1,8 +1,6 @@
 @TestOn("browser")
 
-import "dart:async";
 import 'dart:html';
-import "package:async/async.dart";
 
 import "package:test/test.dart";
 
@@ -68,7 +66,7 @@ void main() {
     Element e = new DivElement();
 
     expect(child2.initJsSync, false);
-    MdaDomEntryHandle<TestMdaNodeElem> testEntry = MdaDomEntryHandle.entry(e, mdcRoot);
+    MdaDomEntryHandle<TestMdaNodeElem> testEntry = MdaDomEntryHandle<TestMdaNodeElem>.entry(e, mdcRoot);
     expect(child2.initJsSync, true);
 
     TestMdaBaseElem child3 = new TestMdaBaseElem(new DivElement()..text = 'Child3');
@@ -76,7 +74,7 @@ void main() {
     TestMdaNodeElem mdcReplace = new TestMdaNodeElem(new DivElement()..text = 'Test - Replace MdaNodeElem', [child3, child4]);
 
     expect(child4.initJsSync, false);
-    testEntry = testEntry.replace(mdcReplace);
+    testEntry = testEntry.replace<TestMdaNodeElem>(mdcReplace);
     expect(child4.initJsSync, true);
 
     expect(e.outerHtml, equals('<div><div><div>Test - Replace MdaNodeElem<div>Child3</div><div>Child4</div></div></div></div>'));
@@ -89,12 +87,11 @@ void main() {
     TestMdaNodeElem mdcRoot = new TestMdaNodeElem(new DivElement()..text = 'Test - MdaNodeElem', [child1, child2]);
     Element e = new DivElement();
 
-    MdaDomEntryHandle<TestMdaNodeElem> testEntry = MdaDomEntryHandle.entry(e, mdcRoot);
+    MdaDomEntryHandle<TestMdaNodeElem> testEntry = MdaDomEntryHandle<TestMdaNodeElem>.entry(e, mdcRoot);
     Stream<int> stream = testEntry.getStreamMap()[TestStreamElem.STREAM_ID];
     expect(stream, emitsInOrder([1, 2]));
     child2.element.click();
     child2.element.click();
   });
-
 
 }

@@ -7,10 +7,10 @@ import 'html_const.dart';
 
 
 class MdcIconButton extends MdaBaseElem {
-  static const MdcElemSpec ELEM_SPEC =
+  static const MdcElemSpec _ELEM_SPEC =
     const MdcElemSpec(HtmlConsts.DIV, MDC_CSS.ICON_BUTTON, [MDConsts.MATERIAL_ICONS]);
 
   MdcIconButton(final String iconStr) {
-    element = ELEM_SPEC.build()..text = iconStr;
+    element = _ELEM_SPEC.build()..text = iconStr;
   }
 }

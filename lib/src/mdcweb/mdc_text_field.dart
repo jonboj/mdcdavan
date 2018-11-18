@@ -10,9 +10,9 @@ import 'mdc_css_classes.dart';
 import 'html_const.dart';
 
 class MdcTextFieldInput extends MdaBaseElem {
-  static const MdcElemSpec ELEM_SPEC = const MdcElemSpec(HtmlConsts.INPUT, MDC_CSS.TEXT_FIELD__INPUT);
+  static const MdcElemSpec _ELEM_SPEC = const MdcElemSpec(HtmlConsts.INPUT, MDC_CSS.TEXT_FIELD__INPUT);
   MdcTextFieldInput(final String type) {
-    element = ELEM_SPEC.build();
+    element = _ELEM_SPEC.build();
     element.setAttribute(HtmlConsts.TYPE, type);
   }
 }

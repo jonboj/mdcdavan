@@ -1,6 +1,5 @@
 
 import 'dart:html';
-import 'dart:async';
 
 abstract class MdcJsComp {
   void mdcJsInitialSyncWithDOM();
@@ -80,7 +79,7 @@ class MdaDomEntryHandle<T extends MdaBaseElem> extends MdaNodeElem {
     _streamElements = _getDeepMdaStreamElemChilds();
   }
 
-  factory MdaDomEntryHandle.entry(Element parent, MdaBaseElem mdaElem) {
+  factory MdaDomEntryHandle.entry(Element parent, T mdaElem) {
     Element e = new DivElement();
     MdaDomEntryHandle<T> entryElem = new MdaDomEntryHandle<T>(e, mdaElem);
     parent.append(e);
@@ -88,11 +87,11 @@ class MdaDomEntryHandle<T extends MdaBaseElem> extends MdaNodeElem {
     return entryElem;
   }
 
-  MdaDomEntryHandle<T> replace(final MdaBaseElem mdaElem) {
+  MdaDomEntryHandle<U> replace<U extends MdaBaseElem>(final MdaBaseElem mdaElem) {
     extraDomCleanup();
     Element e = new DivElement();
     element.replaceWith(e);
-    MdaDomEntryHandle<T> entryElem = new MdaDomEntryHandle<T>(e, mdaElem);
+    MdaDomEntryHandle<U> entryElem = new MdaDomEntryHandle<U>(e, mdaElem);
     entryElem._syncDomElements.forEach((MdcJsComp c){ c.mdcJsInitialSyncWithDOM(); });
     return entryElem;
   }
