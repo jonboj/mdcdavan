@@ -29,13 +29,18 @@ class MdcDrawer extends MdaNodeElem implements MdcJsComp {
 
   jsreg.MdcDrawerJS _mdcDrawerJS;
   DivElement _scrim;
+  final MdcList _mdcList;
 
-  MdcDrawer(MdcDrawerData drawerData)
-      : super(_buildMain(drawerData), [_buildMenuList(drawerData)]);
+  MdcDrawer(MdcDrawerData drawerData): _mdcList =_buildMenuList(drawerData),
+      super(_buildMain(drawerData)) {
+    buildWithChilds([_mdcList]);
+  }
 
   set open(bool state) {
     _mdcDrawerJS.open = state;
   }
+
+  Stream<int> menuSelectStream() => _mdcList.selectStream();
 
   @override
   void extraDomCleanup() {

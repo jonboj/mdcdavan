@@ -17,11 +17,11 @@ class MdcTextFieldInput extends MdaBaseElem {
   }
 }
 
-class MdcTextField extends MdaNodeElem implements MdcJsComp {
+class MdcTextField extends MdaNodeElemStatic implements MdcJsComp {
 
   jsreg.MdcTextFieldJS _mdcTextFieldJS;
 
-  static final MdcElemSpec ELEM_SPEC = new MdcElemSpec(HtmlConsts.DIV, MDC_CSS.TEXT_FIELD);
+  static const MdcElemSpec ELEM_SPEC = const MdcElemSpec(HtmlConsts.DIV, MDC_CSS.TEXT_FIELD);
 
   MdcTextField(List<MdaBaseElem> childs)
       : super(ELEM_SPEC.build(), childs);

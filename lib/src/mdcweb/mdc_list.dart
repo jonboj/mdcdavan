@@ -11,8 +11,7 @@ import 'mdc_css_classes.dart';
 import 'html_const.dart';
 import 'mdc_list_item.dart';
 
-class MdcList extends MdaNodeElem implements MdcJsComp, MdaStreamElem<int> {
-  static const String STREAM_ID = 'MDC_LIST';
+class MdcList extends MdaNodeElemStatic implements MdcJsComp {
 
   static const MdcElemSpec _ELEM_SPEC = const MdcElemSpec(HtmlConsts.NAV, MDC_CSS.LIST);
   jsreg.MdcListJS _mdcListJS;
@@ -26,9 +25,7 @@ class MdcList extends MdaNodeElem implements MdcJsComp, MdaStreamElem<int> {
     _mdcListJS = new jsreg.MdcListJS(element);
   }
 
-  @override
-  StreamRef<int> getStreamRef() =>
-      new StreamRef(STREAM_ID, _getSelectStream());
+  Stream<int> selectStream() => _getSelectStream();
 
   Stream<int> _getSelectStream() {
     StreamGroup<int> streamGroupInt = new StreamGroup<int>();

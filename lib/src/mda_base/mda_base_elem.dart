@@ -5,19 +5,6 @@ abstract class MdcJsComp {
   void mdcJsInitialSyncWithDOM();
 }
 
-class StreamRef<T> {
-  final String id;
-  final Stream<T> s;
-  const StreamRef(final String this.id, final Stream<T> this.s);
-
-  MapEntry<String, Stream<T>> mapEntry() =>
-      new MapEntry<String, Stream<T>>(id, s);
-}
-
-abstract class MdaStreamElem<T> {
-  StreamRef<T> getStreamRef();
-}
-
 //Basic common
 abstract class MdaBaseElem {
   Element _e;
@@ -26,43 +13,50 @@ abstract class MdaBaseElem {
 }
 
 //Node in tree.
-class MdaNodeElem extends MdaBaseElem {
-  final List<MdaBaseElem> _childs;
-  MdaNodeElem(final Element e, final List<MdaBaseElem> this._childs) {
+abstract class MdaNodeElem extends MdaBaseElem {
+  List<MdaBaseElem> _childs;
+
+  MdaNodeElem(final Element e) {
     element = e;
-    _childs.forEach((MdaBaseElem mdaE){ element.append(mdaE.element); });
   }
 
   List<MdaBaseElem> get childs => _childs;
+
+  void buildWithChilds(final List<MdaBaseElem> childs) {
+    _setChilds(childs);
+    _buildDomNodes();
+  }
 
   //When more cleanup needed override.
   void extraDomCleanup() {
   }
 
-  List<MdcJsComp> _getDeepMdcJsCompChilds() {
-    List<MdcJsComp> lStreamElem = _childs.whereType<MdcJsComp>().toList();
-
-    List<List<MdcJsComp>> lStreamElemSub = _childs.whereType<MdaNodeElem>()
-        .map((MdaNodeElem c) => c._getDeepMdcJsCompChilds()).toList();
-
-    if (lStreamElemSub.isNotEmpty) {
-      lStreamElem.addAll(lStreamElemSub.reduce((ll, l) => ll..addAll(l)));
-    }
-
-    return lStreamElem;
+  void _setChilds(final List<MdaBaseElem> childs) {
+    _childs = childs;
   }
 
-  List<MdaStreamElem> _getDeepMdaStreamElemChilds() {
-    List<MdaStreamElem> lStreamElem = _childs.whereType<MdaStreamElem>().toList();
+  void _buildDomNodes() {
+    _childs.forEach((MdaBaseElem mdaE){ element.append(mdaE.element); });
+  }
 
-    List<List<MdaStreamElem>> lStreamElemSub = _childs.whereType<MdaNodeElem>()
-        .map((MdaNodeElem c) => c._getDeepMdaStreamElemChilds()).toList();
+  List<MdcJsComp> _getDeepMdcJsCompChilds() {
+    List<MdcJsComp> lCompElem = _childs.whereType<MdcJsComp>().toList();
 
-    if (lStreamElemSub.isNotEmpty) {
-      lStreamElem.addAll(lStreamElemSub.reduce((ll, l) => ll..addAll(l)));
+    List<List<MdcJsComp>> lCompElemSub = _childs.whereType<MdaNodeElem>()
+        .map((MdaNodeElem c) => c._getDeepMdcJsCompChilds()).toList();
+
+    if (lCompElemSub.isNotEmpty) {
+      lCompElem.addAll(lCompElemSub.reduce((ll, l) => ll..addAll(l)));
     }
 
-    return lStreamElem;
+    return lCompElem;
+  }
+}
+
+abstract class MdaNodeElemStatic extends MdaNodeElem {
+  MdaNodeElemStatic(final Element e, final List<MdaBaseElem> childs)
+      : super(e){
+    buildWithChilds(childs);
   }
 }
 
@@ -71,12 +65,11 @@ class MdaDomEntryHandle<T extends MdaBaseElem> extends MdaNodeElem {
 
   T _node;
   List<MdcJsComp> _syncDomElements;
-  List<MdaStreamElem> _streamElements;
   MdaDomEntryHandle(final Element e, final T this._node)
-    : super(e, [_node]) {
+    : super(e) {
 
+    buildWithChilds([_node]);
     _syncDomElements = _getDeepMdcJsCompChilds();
-    _streamElements = _getDeepMdaStreamElemChilds();
   }
 
   factory MdaDomEntryHandle.entry(Element parent, T mdaElem) {
@@ -97,8 +90,4 @@ class MdaDomEntryHandle<T extends MdaBaseElem> extends MdaNodeElem {
   }
 
   T get node => _node;
-
-  Map<String, Stream> getStreamMap() =>
-      Map.fromEntries( _streamElements.map((MdaStreamElem e) => e.getStreamRef().mapEntry()) );
-
 }

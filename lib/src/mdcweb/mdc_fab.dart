@@ -16,17 +16,11 @@ class MdcFabIcon extends MdaBaseElem {
   }
 }
 
-class MdcFab extends MdaNodeElem implements MdaStreamElem<MouseEvent> {
+class MdcFab extends MdaNodeElemStatic {
 
-  static const String STREAM_ID = 'MDC_FAB';
-
-  static final MdcElemSpec _ELEM_SPEC = new MdcElemSpec(HtmlConsts.DIV, MDC_CSS.FAB);
+  static const MdcElemSpec _ELEM_SPEC = const MdcElemSpec(HtmlConsts.DIV, MDC_CSS.FAB);
 
   MdcFab(final String iconStr)
-      : super(_ELEM_SPEC.build(), [new MdcFabIcon(iconStr)]);
-
-  @override
-  StreamRef<MouseEvent> getStreamRef() =>
-    new StreamRef(STREAM_ID, element.onClick);
-
+      : super(_ELEM_SPEC.build(), [new MdcFabIcon(iconStr)]){
+  }
 }

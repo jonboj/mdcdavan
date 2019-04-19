@@ -20,9 +20,8 @@ class MdcTopAppBarDataDemo extends MdcTopAppBarData {
   : super('ToolBar title', 'User_Field', const ['print', 'bookmark']);
 }
 
-class MdcTopAppBar extends MdaBaseElem implements MdaStreamElem<MouseEvent> {
+class MdcTopAppBar extends MdaBaseElem {
 
-  static const String STREAM_ID = 'MDC_TOP_APP_BAR';
   static const MdcElemSpec _ELEM_SPEC =
     const MdcElemSpec(HtmlConsts.HEADER, MDC_CSS.TOP_APP_BAR, [MDC_CSS.TOP_APP_BAR__FIXED]);
 
@@ -33,9 +32,7 @@ class MdcTopAppBar extends MdaBaseElem implements MdaStreamElem<MouseEvent> {
     _buildStructure(appData);
   }
 
-  @override
-  StreamRef<MouseEvent> getStreamRef() =>
-      new StreamRef(STREAM_ID, _menuElem.onClick);
+  Stream<MouseEvent> menuClick() =>  _menuElem.onClick;
 
   void _buildStructure(final MdcTopAppBarData appData) {
     DivElement topRow = new DivElement();
