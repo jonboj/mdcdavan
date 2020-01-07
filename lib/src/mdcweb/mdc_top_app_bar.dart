@@ -6,6 +6,7 @@ import '../mda_base/mda_base_elem.dart';
 
 import 'mdc_css_classes.dart';
 import 'html_const.dart';
+import 'mdc_icon_button.dart';
 
 class MdcTopAppBarData {
   final String toolBarTitle;
@@ -25,14 +26,14 @@ class MdcTopAppBar extends MdaBaseElem {
   static const MdcElemSpec _ELEM_SPEC =
     const MdcElemSpec(HtmlConsts.HEADER, MDC_CSS.TOP_APP_BAR, [MDC_CSS.TOP_APP_BAR__FIXED]);
 
-  AnchorElement _menuElem;
+  MdcIconButton _menuElem;
 
   MdcTopAppBar(MdcTopAppBarData appData) {
     element = _ELEM_SPEC.build();
     _buildStructure(appData);
   }
 
-  Stream<MouseEvent> menuClick() =>  _menuElem.onClick;
+  Stream<MouseEvent> menuClick() =>  _menuElem.element.onClick;
 
   void _buildStructure(final MdcTopAppBarData appData) {
     DivElement topRow = new DivElement();
@@ -42,16 +43,14 @@ class MdcTopAppBar extends MdaBaseElem {
     Element startSection = Element.section()
       ..classes.addAll([MDC_CSS.TOP_APP_BAR__SECTION, MDC_CSS.TOP_APP_BAR__SECTION__ALIGN_START]);
 
-    _menuElem = new AnchorElement(href: '#')
-      ..classes.addAll([MDConsts.MATERIAL_ICONS, MDC_CSS.TOP_APP_BAR__NAVIGATION_ICON])
-      ..text = 'menu';
-    startSection.append(_menuElem);
+    _menuElem = new MdcIconButton('menu');
+    _menuElem.element.classes.add(MDC_CSS.TOP_APP_BAR__NAVIGATION_ICON);
+    startSection.append(_menuElem.element);
 
     SpanElement titleE = new SpanElement()
       ..classes.add(MDC_CSS.TOP_APP_BAR__TITLE)
       ..text = appData.toolBarTitle;
 
-    startSection.append(_menuElem);
     startSection.append(titleE);
 
     //Toolbar
@@ -63,13 +62,6 @@ class MdcTopAppBar extends MdaBaseElem {
       ..classes.add(MDC_CSS.TOP_APP_BAR__TITLE)
       ..text = appData.userField;
     endSection.append(accountField);
-
-    List<AnchorElement> iconsElements = appData.icons.map((String iconStr) =>
-       new AnchorElement(href: '#')
-         ..classes.addAll([MDConsts.MATERIAL_ICONS, MDC_CSS.TOP_APP_BAR__ACTION_ITEM])
-         ..text = iconStr
-    ).toList();
-    iconsElements.forEach((AnchorElement e){ endSection.append(e); });
 
     topRow.append(startSection);
     topRow.append(endSection);

@@ -1,6 +1,4 @@
 
-import 'dart:html';
-
 import '../mda_base/mdc_elem_spec.dart';
 import '../mda_base/mda_base_elem.dart';
 

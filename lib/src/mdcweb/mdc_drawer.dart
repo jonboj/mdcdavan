@@ -43,10 +43,12 @@ class MdcDrawer extends MdaNodeElem implements MdcJsComp {
   Stream<int> menuSelectStream() => _mdcList.selectStream();
 
   @override
-  void extraDomCleanup() {
-    print('MdcDrawer.removeFromDom');
+  void replaceElem(MdaBaseElem old) {
+    print('MdcDrawer.remove scrim from Dom.');
     _scrim.remove();
+    super.replaceElem(old);
   }
+
 
   @override
   void mdcJsInitialSyncWithDOM() {

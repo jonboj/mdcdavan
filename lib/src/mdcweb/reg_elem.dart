@@ -14,7 +14,8 @@ class MdcDialogJS {
 @JS()
 class MdcSnackbarJS {
   external MdcSnackbarJS(Element e);
-  external void showText(String message);
+  external void open();
+  external set labelText(String text);
 }
 
 @JS()

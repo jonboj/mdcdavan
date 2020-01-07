@@ -10,6 +10,23 @@ abstract class MdaBaseElem {
   Element _e;
   Element get element => _e;
   set element(Element e) { _e = e; }
+
+  //To handle elements with mdcJsInitialSyncWithDOM()
+  void appendElem(Element parent) {
+    parent.append(element);
+    if (this is MdcJsComp) {
+      (this as MdcJsComp).mdcJsInitialSyncWithDOM();
+    }
+  }
+
+  //To handle elements with mdcJsInitialSyncWithDOM()
+  void replaceElem(MdaBaseElem old) {
+    old.element.replaceWith(element);
+    if (this is MdcJsComp) {
+      (this as MdcJsComp).mdcJsInitialSyncWithDOM();
+    }
+  }
+
 }
 
 //Node in tree.
@@ -20,39 +37,14 @@ abstract class MdaNodeElem extends MdaBaseElem {
     element = e;
   }
 
-  List<MdaBaseElem> get childs => _childs;
-
   void buildWithChilds(final List<MdaBaseElem> childs) {
-    _setChilds(childs);
-    _buildDomNodes();
-  }
-
-  //When more cleanup needed override.
-  void extraDomCleanup() {
-  }
-
-  void _setChilds(final List<MdaBaseElem> childs) {
     _childs = childs;
+    _childs.forEach((MdaBaseElem mdaE){ mdaE.appendElem(element); });
   }
 
-  void _buildDomNodes() {
-    _childs.forEach((MdaBaseElem mdaE){ element.append(mdaE.element); });
-  }
-
-  List<MdcJsComp> _getDeepMdcJsCompChilds() {
-    List<MdcJsComp> lCompElem = _childs.whereType<MdcJsComp>().toList();
-
-    List<List<MdcJsComp>> lCompElemSub = _childs.whereType<MdaNodeElem>()
-        .map((MdaNodeElem c) => c._getDeepMdcJsCompChilds()).toList();
-
-    if (lCompElemSub.isNotEmpty) {
-      lCompElem.addAll(lCompElemSub.reduce((ll, l) => ll..addAll(l)));
-    }
-
-    return lCompElem;
-  }
 }
 
+//Childnodes as argument in contructor.
 abstract class MdaNodeElemStatic extends MdaNodeElem {
   MdaNodeElemStatic(final Element e, final List<MdaBaseElem> childs)
       : super(e){
@@ -64,28 +56,21 @@ abstract class MdaNodeElemStatic extends MdaNodeElem {
 class MdaDomEntryHandle<T extends MdaBaseElem> extends MdaNodeElem {
 
   T _node;
-  List<MdcJsComp> _syncDomElements;
   MdaDomEntryHandle(final Element e, final T this._node)
     : super(e) {
 
     buildWithChilds([_node]);
-    _syncDomElements = _getDeepMdcJsCompChilds();
   }
 
   factory MdaDomEntryHandle.entry(Element parent, T mdaElem) {
-    Element e = new DivElement();
-    MdaDomEntryHandle<T> entryElem = new MdaDomEntryHandle<T>(e, mdaElem);
-    parent.append(e);
-    entryElem._syncDomElements.forEach((MdcJsComp c){ c.mdcJsInitialSyncWithDOM(); });
+    MdaDomEntryHandle<T> entryElem = new MdaDomEntryHandle<T>(new DivElement(), mdaElem);
+    entryElem.appendElem(parent);
     return entryElem;
   }
 
   MdaDomEntryHandle<U> replace<U extends MdaBaseElem>(final MdaBaseElem mdaElem) {
-    extraDomCleanup();
-    Element e = new DivElement();
-    element.replaceWith(e);
-    MdaDomEntryHandle<U> entryElem = new MdaDomEntryHandle<U>(e, mdaElem);
-    entryElem._syncDomElements.forEach((MdcJsComp c){ c.mdcJsInitialSyncWithDOM(); });
+    MdaDomEntryHandle<U> entryElem = new MdaDomEntryHandle<U>(new DivElement(), mdaElem);
+    entryElem.replaceElem(_node);
     return entryElem;
   }
 

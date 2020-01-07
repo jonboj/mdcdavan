@@ -1,6 +1,4 @@
 
-import 'dart:html';
-
 import 'package:mdcdavan/src/mdcweb/reg_elem.dart' as jsreg;
 
 import '../mda_base/mda_base_elem.dart';

@@ -1,15 +1,16 @@
 name: mdcdavan
-description: A starting point for Dart libraries or applications.
+description: Small test of concept lib for dart wrapping of mdc web.
 version: 0.0.1
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
   js: ^0.6.0
-  async: ^2.0.8
+  async: ^2.4.0
 
 dev_dependencies:
-  build_runner: '>=0.8.10 <2.0.0'
-  build_web_compilers: '>=0.3.6 <2.0.0'
-  test: ^1.0.0
+  build_runner: ^1.6.0
+  build_web_compilers: ^2.3.0
+  pedantic: ^1.8.0
+  test: ^1.9.4

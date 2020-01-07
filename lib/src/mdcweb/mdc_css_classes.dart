@@ -1,14 +1,14 @@
 
 
-//Version 0.40.0
-//'https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css';
+//Version 4.0.0
+//'https://unpkg.com/material-components-web@4.0.0/dist/material-components-web.min.css';
 class MDC_CSS {
-
-  static const String BUTTON__DENSE = 'mdc-button--dense';
   static const String BUTTON__OUTLINED = 'mdc-button--outlined';
   static const String BUTTON__RAISED = 'mdc-button--raised';
+  static const String BUTTON__TOUCH = 'mdc-button--touch';
   static const String BUTTON__UNELEVATED = 'mdc-button--unelevated';
   static const String BUTTON__ICON = 'mdc-button__icon';
+  static const String BUTTON__RIPPLE = 'mdc-button__ripple';
   static const String BUTTON = 'mdc-button';
   static const String CARD__OUTLINED = 'mdc-card--outlined';
   static const String CARD__ACTION__BUTTON = 'mdc-card__action--button';
@@ -22,14 +22,17 @@ class MDC_CSS {
   static const String CARD__PRIMARY_ACTION = 'mdc-card__primary-action';
   static const String CARD = 'mdc-card';
   static const String CHECKBOX__DISABLED = 'mdc-checkbox--disabled';
+  static const String CHECKBOX__TOUCH = 'mdc-checkbox--touch';
   static const String CHECKBOX__BACKGROUND = 'mdc-checkbox__background';
   static const String CHECKBOX__CHECKMARK_PATH = 'mdc-checkbox__checkmark-path';
   static const String CHECKBOX__CHECKMARK = 'mdc-checkbox__checkmark';
   static const String CHECKBOX__MIXEDMARK = 'mdc-checkbox__mixedmark';
   static const String CHECKBOX__NATIVE_CONTROL = 'mdc-checkbox__native-control';
+  static const String CHECKBOX__RIPPLE = 'mdc-checkbox__ripple';
   static const String CHECKBOX = 'mdc-checkbox';
   static const String CHIP__EXIT = 'mdc-chip--exit';
   static const String CHIP__SELECTED = 'mdc-chip--selected';
+  static const String CHIP__TOUCH = 'mdc-chip--touch';
   static const String CHIP_SET = 'mdc-chip-set';
   static const String CHIP__CHECKMARK_PATH = 'mdc-chip__checkmark-path';
   static const String CHIP__CHECKMARK_SVG = 'mdc-chip__checkmark-svg';
@@ -37,8 +40,20 @@ class MDC_CSS {
   static const String CHIP__ICON__LEADING = 'mdc-chip__icon--leading';
   static const String CHIP__ICON__TRAILING = 'mdc-chip__icon--trailing';
   static const String CHIP__ICON = 'mdc-chip__icon';
+  static const String CHIP__RIPPLE = 'mdc-chip__ripple';
   static const String CHIP__TEXT = 'mdc-chip__text';
   static const String CHIP = 'mdc-chip';
+  static const String DATA_TABLE__CELL__CHECKBOX = 'mdc-data-table__cell--checkbox';
+  static const String DATA_TABLE__CELL__NUMERIC = 'mdc-data-table__cell--numeric';
+  static const String DATA_TABLE__CELL = 'mdc-data-table__cell';
+  static const String DATA_TABLE__CONTENT = 'mdc-data-table__content';
+  static const String DATA_TABLE__HEADER_CELL__NUMERIC = 'mdc-data-table__header-cell--numeric';
+  static const String DATA_TABLE__HEADER_CELL = 'mdc-data-table__header-cell';
+  static const String DATA_TABLE__HEADER_ROW = 'mdc-data-table__header-row';
+  static const String DATA_TABLE__ROW__SELECTED = 'mdc-data-table__row--selected';
+  static const String DATA_TABLE__ROW = 'mdc-data-table__row';
+  static const String DATA_TABLE__TABLE = 'mdc-data-table__table';
+  static const String DATA_TABLE = 'mdc-data-table';
   static const String DIALOG__CLOSING = 'mdc-dialog--closing';
   static const String DIALOG_SCROLL_LOCK = 'mdc-dialog-scroll-lock';
   static const String DIALOG__ACTIONS = 'mdc-dialog__actions';
@@ -93,6 +108,7 @@ class MDC_CSS {
   static const String FAB__MINI = 'mdc-fab--mini';
   static const String FAB__ICON = 'mdc-fab__icon';
   static const String FAB__LABEL = 'mdc-fab__label';
+  static const String FAB__RIPPLE = 'mdc-fab__ripple';
   static const String FAB = 'mdc-fab';
   static const String FLOATING_LABEL__FLOAT_ABOVE = 'mdc-floating-label--float-above';
   static const String FLOATING_LABEL__SHAKE = 'mdc-floating-label--shake';
@@ -109,8 +125,6 @@ class MDC_CSS {
   static const String ICON_BUTTON__ICON__ON = 'mdc-icon-button__icon--on';
   static const String ICON_BUTTON__ICON = 'mdc-icon-button__icon';
   static const String ICON_BUTTON = 'mdc-icon-button';
-  static const String ICON_TOGGLE__DISABLED = 'mdc-icon-toggle--disabled';
-  static const String ICON_TOGGLE = 'mdc-icon-toggle';
   static const String IMAGE_LIST__MASONRY = 'mdc-image-list--masonry';
   static const String IMAGE_LIST__IMAGE_ASPECT_CONTAINER = 'mdc-image-list__image-aspect-container';
   static const String IMAGE_LIST__IMAGE = 'mdc-image-list__image';
@@ -193,6 +207,7 @@ class MDC_CSS {
   static const String LIST_GROUP__SUBHEADER = 'mdc-list-group__subheader';
   static const String LIST_ITEM__ACTIVATED = 'mdc-list-item--activated';
   static const String LIST_ITEM__DISABLED = 'mdc-list-item--disabled';
+  static const String LIST_ITEM__SELECTED = 'mdc-list-item--selected';
   static const String LIST_ITEM__GRAPHIC = 'mdc-list-item__graphic';
   static const String LIST_ITEM__META = 'mdc-list-item__meta';
   static const String LIST_ITEM__PRIMARY_TEXT = 'mdc-list-item__primary-text';
@@ -209,23 +224,30 @@ class MDC_CSS {
   static const String MENU__SELECTION_GROUP_ICON = 'mdc-menu__selection-group-icon';
   static const String MENU__SELECTION_GROUP = 'mdc-menu__selection-group';
   static const String MENU = 'mdc-menu';
-  static const String NOTCHED_OUTLINE__NOTCHED = 'mdc-notched-outline--notched';
-  static const String NOTCHED_OUTLINE__IDLE = 'mdc-notched-outline__idle';
-  static const String NOTCHED_OUTLINE__PATH = 'mdc-notched-outline__path';
+  static const String NOTCHED_OUTLINE__LEADING = 'mdc-notched-outline__leading';
+  static const String NOTCHED_OUTLINE__NOTCH = 'mdc-notched-outline__notch';
+  static const String NOTCHED_OUTLINE__TRAILING = 'mdc-notched-outline__trailing';
   static const String NOTCHED_OUTLINE = 'mdc-notched-outline';
   static const String RADIO__DISABLED = 'mdc-radio--disabled';
+  static const String RADIO__TOUCH = 'mdc-radio--touch';
   static const String RADIO__BACKGROUND = 'mdc-radio__background';
   static const String RADIO__INNER_CIRCLE = 'mdc-radio__inner-circle';
   static const String RADIO__NATIVE_CONTROL = 'mdc-radio__native-control';
   static const String RADIO__OUTER_CIRCLE = 'mdc-radio__outer-circle';
+  static const String RADIO__RIPPLE = 'mdc-radio__ripple';
   static const String RADIO = 'mdc-radio';
   static const String RIPPLE_SURFACE__TEST_EDGE_VAR_BUG = 'mdc-ripple-surface--test-edge-var-bug';
   static const String RIPPLE_SURFACE = 'mdc-ripple-surface';
   static const String RIPPLE_UPGRADED = 'mdc-ripple-upgraded';
   static const String SELECT__DISABLED = 'mdc-select--disabled';
-  static const String SELECT__OUTLINED__NATIVE_CONTROL = 'mdc-select--outlined__native-control';
   static const String SELECT__OUTLINED = 'mdc-select--outlined';
-  static const String SELECT__NATIVE_CONTROL = 'mdc-select__native-control';
+  static const String SELECT_HELPER_TEXT__PERSISTENT = 'mdc-select-helper-text--persistent';
+  static const String SELECT_HELPER_TEXT__VALIDATION_MSG = 'mdc-select-helper-text--validation-msg';
+  static const String SELECT_HELPER_TEXT = 'mdc-select-helper-text';
+  static const String SELECT__ANCHOR = 'mdc-select__anchor';
+  static const String SELECT__DROPDOWN_ICON = 'mdc-select__dropdown-icon';
+  static const String SELECT__ICON = 'mdc-select__icon';
+  static const String SELECT__SELECTED_TEXT = 'mdc-select__selected-text';
   static const String SELECT = 'mdc-select';
   static const String SLIDER__DISABLED = 'mdc-slider--disabled';
   static const String SLIDER__FOCUS_RING = 'mdc-slider__focus-ring';
@@ -238,12 +260,13 @@ class MDC_CSS {
   static const String SLIDER__TRACK_MARKER = 'mdc-slider__track-marker';
   static const String SLIDER__TRACK = 'mdc-slider__track';
   static const String SLIDER = 'mdc-slider';
-  static const String SNACKBAR__ACTION_ON_BOTTOM = 'mdc-snackbar--action-on-bottom';
-  static const String SNACKBAR__ACTIVE = 'mdc-snackbar--active';
-  static const String SNACKBAR__ALIGN_START = 'mdc-snackbar--align-start';
-  static const String SNACKBAR__ACTION_BUTTON = 'mdc-snackbar__action-button';
-  static const String SNACKBAR__ACTION_WRAPPER = 'mdc-snackbar__action-wrapper';
-  static const String SNACKBAR__TEXT = 'mdc-snackbar__text';
+  static const String SNACKBAR__CLOSING = 'mdc-snackbar--closing';
+  static const String SNACKBAR__LEADING = 'mdc-snackbar--leading';
+  static const String SNACKBAR__ACTIONS = 'mdc-snackbar__actions';
+  static const String SNACKBAR__ACTION = 'mdc-snackbar__action';
+  static const String SNACKBAR__DISMISS = 'mdc-snackbar__dismiss';
+  static const String SNACKBAR__LABEL = 'mdc-snackbar__label';
+  static const String SNACKBAR__SURFACE = 'mdc-snackbar__surface';
   static const String SNACKBAR = 'mdc-snackbar';
   static const String SWITCH__DISABLED = 'mdc-switch--disabled';
   static const String SWITCH__NATIVE_CONTROL = 'mdc-switch__native-control';
@@ -273,6 +296,8 @@ class MDC_CSS {
   static const String TEXT_FIELD__FULLWIDTH = 'mdc-text-field--fullwidth';
   static const String TEXT_FIELD__OUTLINED = 'mdc-text-field--outlined';
   static const String TEXT_FIELD__TEXTAREA = 'mdc-text-field--textarea';
+  static const String TEXT_FIELD_CHARACTER_COUNTER = 'mdc-text-field-character-counter';
+  static const String TEXT_FIELD_HELPER_LINE = 'mdc-text-field-helper-line';
   static const String TEXT_FIELD_HELPER_TEXT__PERSISTENT = 'mdc-text-field-helper-text--persistent';
   static const String TEXT_FIELD_HELPER_TEXT__VALIDATION_MSG = 'mdc-text-field-helper-text--validation-msg';
   static const String TEXT_FIELD_HELPER_TEXT = 'mdc-text-field-helper-text';
@@ -305,20 +330,6 @@ class MDC_CSS {
   static const String THEME__TEXT_SECONDARY_ON_BACKGROUND = 'mdc-theme--text-secondary-on-background';
   static const String THEME__TEXT_SECONDARY_ON_DARK = 'mdc-theme--text-secondary-on-dark';
   static const String THEME__TEXT_SECONDARY_ON_LIGHT = 'mdc-theme--text-secondary-on-light';
-  static const String TOOLBAR__FIXED_AT_LAST_ROW = 'mdc-toolbar--fixed-at-last-row';
-  static const String TOOLBAR__FIXED = 'mdc-toolbar--fixed';
-  static const String TOOLBAR__FLEXIBLE_SPACE_MINIMIZED = 'mdc-toolbar--flexible-space-minimized';
-  static const String TOOLBAR__FLEXIBLE = 'mdc-toolbar--flexible';
-  static const String TOOLBAR_FIXED_ADJUST = 'mdc-toolbar-fixed-adjust';
-  static const String TOOLBAR__ICON = 'mdc-toolbar__icon';
-  static const String TOOLBAR__MENU_ICON = 'mdc-toolbar__menu-icon';
-  static const String TOOLBAR__ROW = 'mdc-toolbar__row';
-  static const String TOOLBAR__SECTION__ALIGN_END = 'mdc-toolbar__section--align-end';
-  static const String TOOLBAR__SECTION__ALIGN_START = 'mdc-toolbar__section--align-start';
-  static const String TOOLBAR__SECTION__SHRINK_TO_FIT = 'mdc-toolbar__section--shrink-to-fit';
-  static const String TOOLBAR__SECTION = 'mdc-toolbar__section';
-  static const String TOOLBAR__TITLE = 'mdc-toolbar__title';
-  static const String TOOLBAR = 'mdc-toolbar';
   static const String TOP_APP_BAR__DENSE_FIXED_ADJUST = 'mdc-top-app-bar--dense-fixed-adjust';
   static const String TOP_APP_BAR__DENSE_PROMINENT_FIXED_ADJUST = 'mdc-top-app-bar--dense-prominent-fixed-adjust';
   static const String TOP_APP_BAR__FIXED_ADJUST = 'mdc-top-app-bar--fixed-adjust';
@@ -337,6 +348,7 @@ class MDC_CSS {
   static const String TOP_APP_BAR__SECTION = 'mdc-top-app-bar__section';
   static const String TOP_APP_BAR__TITLE = 'mdc-top-app-bar__title';
   static const String TOP_APP_BAR = 'mdc-top-app-bar';
+  static const String TOUCH_TARGET_WRAPPER = 'mdc-touch-target-wrapper';
   static const String TYPOGRAPHY__BODY1 = 'mdc-typography--body1';
   static const String TYPOGRAPHY__BODY2 = 'mdc-typography--body2';
   static const String TYPOGRAPHY__BUTTON = 'mdc-typography--button';
@@ -351,5 +363,4 @@ class MDC_CSS {
   static const String TYPOGRAPHY__SUBTITLE1 = 'mdc-typography--subtitle1';
   static const String TYPOGRAPHY__SUBTITLE2 = 'mdc-typography--subtitle2';
   static const String TYPOGRAPHY = 'mdc-typography';
-
 }
