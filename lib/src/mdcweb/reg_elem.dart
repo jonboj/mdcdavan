@@ -36,4 +36,8 @@ class MdcTextFieldJS {
 }
 
 @JS()
-external Element buildSlider(Element e, Function listenChange);
+class MdcSliderJS {
+  external MdcSliderJS(Element e);
+  external int get value;
+  external void layout();//Re-computes layout
+}
