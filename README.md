@@ -54,14 +54,14 @@ aggregated js object. e.g. `MdcIconButton` at js [mdc-icon-button](https://githu
 Mdc web components has related a set of css classes e.g. `mdc-drawer` and `mdc-drawer__content`.
 These are parsed from `material-components-web.min.css` with a console Dart program ( `mdc_cssparse.dart` )
 as constants into Dart class `MDC_CSS`. Hence `MDC_CSS` acts as a checked reference for mdc web css classes definitions.
-Current version of `MDC_CSS` is based on mdc web version `0.40.0`.
+Current version of `MDC_CSS` is based on mdc web version `4.0.0`.
 
 #### Mdc web import
 
-Mdc web library import could be done through e.g. `index.html` below shown for version `0.40.0`
+Mdc web library import could be done through e.g. `index.html` below shown for version `4.0.0`
 
-`<link rel="stylesheet" href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css">`
-`<script src="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.js"></script>`
+`<link rel="stylesheet" href="https://unpkg.com/material-components-web@4.0.0/dist/material-components-web.min.css">`
+`<script src="https://unpkg.com/material-components-web@4.0.0/dist/material-components-web.min.js"></script>`
 
 
 ### App framework
